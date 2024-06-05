@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>{{ student_id }} {{name}} {{ surname }}</title>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <h1>Python Odev 7</h1>
+      <p>İsim: {{ name }}</p>
+      <p>Soyisim: {{ surname }}</p>
+      <p>Öğrenci Numarası: {{ student_id }}</p>
+      <img
+        id="plot"
+        src="{{ url_for('generate_plot') }}"
+        alt="Rastgele Noktalar"
+      />
+      <br /><br />
+      <button onclick="refreshPlot()">Yeni Noktalar Oluştur</button>
+      <br /><br />
+      <a href="{{ url_for('download_excel') }}" download
+        >Excel Dosyasını İndir</a
+      >
+    </div>
+
+    <script>
+      function refreshPlot() {
+        document.getElementById("plot").src =
+          "{{ url_for('generate_plot') }}" + "?" + new Date().getTime();
+      }
+    </script>
+  </body>
+</html>
